@@ -1,4 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/L5QgqEe3)
+
 # HABIT TRACKER CLI - CHALLENGE 3
 
 ## DESKRIPSI ASSIGNMENT
@@ -50,9 +51,10 @@ Aplikasi Anda harus memiliki 10 menu dengan fitur berikut:
 7. Hapus Kebiasaan - Delete habit dari list
 8. Lihat Statistik - Tampilkan summary dengan array methods
 9. Demo Loop - Demonstrasi while dan for loop
-0. Keluar - Exit aplikasi
+10. Keluar - Exit aplikasi
 
 Fitur Tambahan:
+
 - Reminder otomatis setiap 10 detik
 - Data persistence menggunakan JSON file
 - Progress bar ASCII untuk visualisasi
@@ -64,6 +66,7 @@ Fitur Tambahan:
 ### TAHAP 1: SETUP PROJECT (15 menit)
 
 1. Pastikan Node.js sudah terinstall
+
    ```bash
    node --version
    ```
@@ -71,6 +74,7 @@ Fitur Tambahan:
 2. Buat file app.js
 
 3. Import module yang diperlukan:
+
    ```javascript
    const readline = require('readline');
    const fs = require('fs');
@@ -78,6 +82,7 @@ Fitur Tambahan:
    ```
 
 4. Definisikan konstanta:
+
    ```javascript
    const DATA_FILE = path.join(__dirname, 'habits-data.json');
    const REMINDER_INTERVAL = 10000; // 10 detik
@@ -87,8 +92,8 @@ Fitur Tambahan:
 5. Setup readline interface:
    ```javascript
    const rl = readline.createInterface({
-       input: process.stdin,
-       output: process.stdout
+     input: process.stdin,
+     output: process.stdout,
    });
    ```
 
@@ -101,9 +106,11 @@ KONSEP YANG DIGUNAKAN: Objek Dasar, Date, filter()
 ### TAHAP 3: BUAT HABIT CLASS (30 menit)
 
 Implementasi class untuk satu kebiasaan dengan properties:
+
 - id, name, targetFrequency, completions (array), createdAt
 
 Methods yang harus ada:
+
 - markComplete()
 - getThisWeekCompletions()
 - isCompletedThisWeek()
@@ -117,11 +124,13 @@ KONSEP YANG DIGUNAKAN: Class, Array, Date, filter(), find()
 Class utama untuk mengelola aplikasi dengan methods:
 
 CRUD Operations:
+
 - addHabit(name, frequency)
 - completeHabit(habitIndex)
 - deleteHabit(habitIndex)
 
 Display Methods:
+
 - displayProfile()
 - displayHabits(filter)
 - displayHabitsWithWhile()
@@ -129,11 +138,13 @@ Display Methods:
 - displayStats()
 
 Reminder System:
+
 - startReminder()
 - showReminder()
 - stopReminder()
 
 File Operations:
+
 - saveToFile()
 - loadFromFile()
 - clearAllData()
@@ -143,6 +154,7 @@ KONSEP YANG DIGUNAKAN: Class, Array, filter(), map(), find(), forEach(), Date, s
 ### TAHAP 5: BUAT CLI INTERFACE (30 menit)
 
 Fungsi untuk interaksi dengan user:
+
 - askQuestion(question) - Return Promise untuk input
 - displayMenu() - Tampilkan menu 0-9
 - handleMenu(tracker) - Handle pilihan user dengan switch-case
@@ -150,6 +162,7 @@ Fungsi untuk interaksi dengan user:
 ### TAHAP 6: BUAT MAIN FUNCTION (15 menit)
 
 Fungsi utama untuk menjalankan aplikasi:
+
 - Tampilkan banner
 - Buat instance HabitTracker
 - Optional: Tambah data demo
@@ -158,6 +171,7 @@ Fungsi utama untuk menjalankan aplikasi:
 ### TAHAP 7: TESTING (30 menit)
 
 Test aplikasi dengan skenario:
+
 1. Jalankan aplikasi
 2. Tambah data demo
 3. Test setiap menu
@@ -221,6 +235,7 @@ Total: 100 poin
 ## CARA MENJALANKAN
 
 1. Pastikan Node.js sudah terinstall
+
    ```bash
    node --version
    ```
@@ -228,11 +243,13 @@ Total: 100 poin
 2. Buka terminal/command prompt
 
 3. Masuk ke folder project Anda
+
    ```bash
    cd path/to/your/project
    ```
 
 4. Jalankan aplikasi
+
    ```bash
    node app.js
    ```
@@ -244,6 +261,7 @@ Total: 100 poin
 ## CONTOH OUTPUT
 
 ### Menu Utama
+
 ```
 ==================================================
 HABIT TRACKER - MAIN MENU
@@ -262,6 +280,7 @@ HABIT TRACKER - MAIN MENU
 ```
 
 ### Contoh Tampilan Habits
+
 ```
 1. [Aktif] Minum Air 8 Gelas
    Target: 7x/minggu
@@ -275,6 +294,7 @@ HABIT TRACKER - MAIN MENU
 ```
 
 ### Contoh Reminder
+
 ```
 ==================================================
 REMINDER: Jangan lupa "Minum Air 8 Gelas"!
@@ -286,57 +306,66 @@ REMINDER: Jangan lupa "Minum Air 8 Gelas"!
 ## CONTOH IMPLEMENTASI KONSEP
 
 ### 1. Nullish Coalescing
+
 ```javascript
 const habit = this.habits[index - 1] ?? null;
 const name = data.name ?? 'Default';
 ```
 
 ### 2. Filter
+
 ```javascript
-const activeHabits = this.habits.filter(h => !h.isCompletedThisWeek());
+const activeHabits = this.habits.filter((h) => !h.isCompletedThisWeek());
 ```
 
 ### 3. Map
+
 ```javascript
-const habitNames = this.habits.map(h => h.name);
+const habitNames = this.habits.map((h) => h.name);
 ```
 
 ### 4. Find
+
 ```javascript
-const habit = this.habits.find(h => h.id === habitId);
+const habit = this.habits.find((h) => h.id === habitId);
 ```
 
 ### 5. forEach
+
 ```javascript
-this.habits.forEach(habit => {
-    console.log(habit.name);
+this.habits.forEach((habit) => {
+  console.log(habit.name);
 });
 ```
 
 ### 6. While Loop
+
 ```javascript
 let i = 0;
 while (i < this.habits.length) {
-    console.log(this.habits[i].name);
-    i++;
+  console.log(this.habits[i].name);
+  i++;
 }
 ```
 
 ### 7. For Loop
+
 ```javascript
 for (let i = 0; i < this.habits.length; i++) {
-    console.log(this.habits[i].name);
+  console.log(this.habits[i].name);
 }
 ```
 
 ### 8. setInterval
+
 ```javascript
 setInterval(() => {
-    this.showReminder();
+  this.showReminder();
 }, 10000);
 ```
 
 ### 9. JSON Operations
+
 ```javascript
 // Save
 const jsonData = JSON.stringify(data, null, 2);
@@ -352,22 +381,27 @@ const data = JSON.parse(jsonData);
 ## TROUBLESHOOTING
 
 ### Error: Cannot find module readline
+
 - Pastikan menggunakan Node.js, bukan browser
 - Install Node.js dari nodejs.org
 
 ### Error: EACCES permission denied
+
 - Pastikan folder memiliki write permission
 - Coba jalankan terminal sebagai administrator
 
 ### Data tidak tersimpan
+
 - Cek apakah file habits-data.json terbuat
 - Pastikan tidak ada error saat panggil saveToFile()
 
 ### Reminder tidak muncul
+
 - Pastikan ada habit yang belum diselesaikan hari ini
 - Tunggu minimal 10 detik
 
 ### Input tidak terbaca
+
 - Pastikan menggunakan readline dengan benar
 - Gunakan Promise dengan resolve()
 
@@ -401,12 +435,14 @@ const data = JSON.parse(jsonData);
 ## REFERENSI BELAJAR
 
 ### Array Methods
+
 - filter(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 - map(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 - find(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
 - forEach(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 
 ### JavaScript Concepts
+
 - Date: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 - setInterval: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
 - JSON.stringify(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
@@ -414,6 +450,7 @@ const data = JSON.parse(jsonData);
 - Nullish Coalescing: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing
 
 ### Node.js Modules
+
 - Readline: https://nodejs.org/api/readline.html
 - File System: https://nodejs.org/api/fs.html
 
@@ -453,6 +490,7 @@ challenge-3/
 ## KONTAK
 
 Jika ada pertanyaan mengenai assignment ini, hubungi:
+
 - Instruktur: (akan diisi)
 - Email: (akan diisi)
 - Office Hours: (akan diisi)
@@ -460,4 +498,5 @@ Jika ada pertanyaan mengenai assignment ini, hubungi:
 ---
 
 SELAMAT MENGERJAKAN!
+
 # challenge-3-batch-3-rep
